@@ -3,15 +3,16 @@ Start Plotter
 
 $ cd plotter
 $ docker build -t burst/plotter .
-$ docker run -v /mnt/2tb_burst/:/tmp/plot_partition -it burst/plotter 
-$ /omdcct/plot -k 7431686757998437789 -x 1 -d /tmp/plot_partition/ -n 4000000 -m 24000
+$ docker run -v /mnt/2tb_burst/:/tmp/plot_partition -it burst/plotter -k 7431686757998437789 -x 1 -d /tmp/plot_partition/ -s 937736997616862104
 
 /mnt/2tb_burst is host partition mount point
 -k is account number to give rewards to
 -x is the CPU type
 -n number of blocks (256kB each)
 -m step size (RAM to use)
+-s is the starting block
 
+It will use the max number of threads by default, 80% of ram, and will fill the partition
 
 
 Start Miner
@@ -19,7 +20,7 @@ Start Miner
 
 $ cd miner
 $ docker build -t burst/miner .
-$ docker run -p 8080:80 burst/miner
+$ docker run -p 8080:80 -it burst/miner
 
 Server will be available on http://localhost:8080
 
