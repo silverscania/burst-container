@@ -15,14 +15,14 @@ RUN git clone https://github.com/Creepsky/creepMiner.git
 # install-poco needs root
 RUN cd creepMiner && sh ./install-poco.sh
 
-COPY mining.conf /creepMiner
-
 RUN chown -R burstminer /creepMiner
 USER burstminer
 
 WORKDIR /creepMiner
 RUN cmake CMakeLists.txt -DNO_GPU=ON -DCMAKE_BUILD_TYPE=RELEASE \
     && make -j 4
+
+COPY --chown=burstminer mining.conf /creepMiner
  
 # Only works when run from the bin dir
 WORKDIR bin
