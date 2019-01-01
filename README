@@ -20,7 +20,6 @@ Start Miner
 
 $ cd miner
 $ docker build -t burst/miner .
-$ docker run -p 8082:8080 -it docker run -p 8082:8080 -v /mnt/burst1:/mnt/burst1 -v /mnt/burst2:/mnt/burst2 -v /mnt/burst3:/mnt/burst3 -v /mnt/burst4:/mnt/burst4 burst/miner
-
+$ docker run -p 8082:8080 -d -v /mnt/burst1:/mnt/burst1 -v /mnt/burst2:/mnt/burst2 -v /mnt/burst3:/mnt/burst3 -v /mnt/burst4:/mnt/burst4 --restart unless-stopped burst/miner
 Server will be available on http://localhost:8082
 
